@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Latency Arena</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="wrap">
+    <header class="topbar">
+      <div class="brand">Latency Arena</div>
+      <div class="top-actions">
+        <div class="latency-pill">Latency: <span id="latencyVal">200</span>ms</div>
+        <button id="startBtn" class="btn">Start Round</button>
+      </div>
+    </header>
+
+    <main class="main-grid">
+      <section class="stage card">
+        <div class="stage-header">
+          <div class="status-wrap">
+            <h3 id="status">Ready to Connect</h3>
+          </div>
+          <div class="scoreboard">
+            <div class="score-item">
+              <div class="label">PLAYER 1</div>
+              <div id="p1Score" class="val" style="color:var(--primary)">00</div>
+            </div>
+            <div class="score-item">
+              <div class="label">PLAYER 2</div>
+              <div id="p2Score" class="val" style="color:var(--danger)">00</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="canvas-wrap">
+          <canvas id="game" width="960" height="520"></canvas>
+          
+          <div id="gameOverModal" class="modal-overlay">
+            <div class="modal-content">
+              <div class="modal-title">Victory!</div>
+              <div id="winnerText" class="modal-winner">Player 1 Won</div>
+              <div class="modal-actions">
+                <button id="closeModalBtn" class="btn">Play Again</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stage-footer">
+          <div>Connected: <span id="playersCount">0</span></div>
+          <div>Goal: <strong>100 Coins</strong></div>
+        </div>
+      </section>
+
+      <aside class="rightbar">
+        <div class="card stats">
+          <h4>Match Stats</h4>
+          <div class="stat-row"><span>Active Coins</span><strong id="coinCount">0</strong></div>
+          <div class="stat-row"><span>State</span><strong id="gameState">WAITING</strong></div>
+        </div>
+
+        <div class="card controls">
+          <h4>Controls</h4>
+          <div class="kbd-row"><kbd>W A S D</kbd><span>Player 1</span></div>
+          <div class="kbd-row"><kbd>↑ ↓ ← →</kbd><span>Player 2</span></div>
+        </div>
+
+        <div class="card theme-actions">
+          <h4>Preferences</h4>
+          <button id="themeSwitch" class="btn small">Toggle Light Mode</button>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="footer">
+      Server: ws://localhost:8080 &bull; v1.0.6
+    </footer>
+  </div>
+
+  <script src="./src/main.js"></script>
+</body>
+</html>
